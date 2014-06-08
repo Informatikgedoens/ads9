@@ -1,23 +1,39 @@
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		//Strings
+		System.out.println("Strings: ");
+		String [] unsortiert = IO.rwString("/home/niklas/workspace/ADSBLATT8/string");
 		
-		int[] unsortiert = {3,16,-1,2,2,50};
-		int[] sortiert = InsertionSort.insert(unsortiert);
+		//MergeSort algorithmus.
+		MergeSort2.mergeSort(unsortiert);
+		MergeSort2.ausgeben(unsortiert);
 		
-		System.out.println("InsertionSort: ");
-		InsertionSort.ausgeben(sortiert);
+		IO.write(unsortiert, "/home/niklas/workspace/ADSBLATT8/stringOutput");
+		// ints
+		System.out.println();
+		System.out.println();
+		System.out.println("Integer: ");
+		int [] unsortiert1 = IO.rwInt("/home/niklas/workspace/ADSBLATT8/integer");
 		
-		sortiert = SelectionSort.select(unsortiert);
+		MergeSort2.mergeSort(unsortiert1);
+		MergeSort2.ausgeben(unsortiert1);
 		
-		System.out.println("\n" + "SelectionSort: ");
-		SelectionSort.ausgeben(sortiert);
+		IO.write(unsortiert1, "/home/niklas/workspace/ADSBLATT8/intOutput");
+		//Double
+		System.out.println();
+		System.out.println();
+		System.out.println("Double: ");
+		Double [] unsortiert2 = IO.rwDouble("/home/niklas/workspace/ADSBLATT8/double");
 		
-		sortiert= BubbleSort.bubble(unsortiert);
+		MergeSort2.mergeSort(unsortiert2);
+		MergeSort2.ausgeben(unsortiert2);
 		
-		System.out.println("\n" + "BubbleSort: ");
-		BubbleSort.ausgeben(sortiert);
-	
+		IO.write(unsortiert2, "/home/niklas/workspace/ADSBLATT8/doubleOutput");
 	}
 }
