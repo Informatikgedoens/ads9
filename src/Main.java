@@ -1,3 +1,5 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,11 +13,13 @@ public class Main {
 	
 	private static boolean file = false;
 	
-	private static String[] string = null;
-	private static double[] double1 = null;
-	private static int[] integer = null;
+	String[] string = null;
+	double[] double1 = null;
+	int[] integer = null;
 	
-	private static final String OUTPUT = "C:/Users/Gsus Cryst/Desktop";
+	private static final String OUTPUTSTR = "C:\\Users\\Niklas\\Desktop\\ADSS8\\ADS8\\stringOut.txt";
+	private static final String OUTPUTINT = "C:\\Users\\Niklas\\Desktop\\ADSS8\\ADS8\\intOut.txt";
+	private static final String OUTPUTDOUBLE = "C:\\Users\\Niklas\\Desktop\\ADSS8\\ADS8\\doubleOut.txt";
 
 	public static void main(String[] args) {
 		String[] string = null;
@@ -40,7 +44,7 @@ public class Main {
 							switch (help[1]) {
 							case "1":
 								try {
-									string = new IO().rwString(help[0]);
+									string =  IO.rwString(help[0]);
 								} catch (Exception e) {
 									System.err.println(MAIN_ERROR);
 								}
@@ -50,7 +54,7 @@ public class Main {
 								break;
 							case "2":
 								try {
-									double1 = new IO().rwDouble(help[0]);
+									double1 = IO.rwDouble(help[0]);
 								} catch (Exception e) {
 									System.err.println(MAIN_ERROR);
 								}
@@ -60,7 +64,7 @@ public class Main {
 								break;
 							case "3":
 								try {
-									integer = new IO().rwInt(help[0]);
+									integer = IO.rwInt(help[0]);
 								} catch (Exception e) {
 									System.err.println(MAIN_ERROR);
 								}
@@ -88,7 +92,7 @@ public class Main {
 						if (string != null) {
 							string = is.insert(string);
 							try {
-								new IO().write(string, OUTPUT);
+								IO.write(string, OUTPUTSTR);
 							} catch (Exception e) {
 								
 							}
@@ -96,7 +100,7 @@ public class Main {
 						} else if (double1 != null) {
 							double1 = is.insert(double1);
 							try {
-								new IO().write(double1, OUTPUT);
+								IO.write(double1, OUTPUTDOUBLE);
 							} catch (Exception e) {
 								
 							}
@@ -104,7 +108,7 @@ public class Main {
 						} else if (integer != null) {
 							integer = is.insert(integer);
 							try {
-								new IO().write(integer, OUTPUT);
+								IO.write(integer, OUTPUTINT);
 							} catch (Exception e) {
 								
 							}
@@ -118,7 +122,7 @@ public class Main {
 						if (string != null) {
 							string = bs.bubble(string);
 							try {
-								new IO().write(string, OUTPUT);
+								IO.write(string, OUTPUTSTR);
 							} catch (Exception e) {
 								
 							}
@@ -126,7 +130,7 @@ public class Main {
 						} else if (double1 != null) {
 							double1 = bs.bubble(double1);
 							try {
-								new IO().write(double1, OUTPUT);
+								IO.write(double1, OUTPUTDOUBLE);
 							} catch (Exception e) {
 								
 							}
@@ -134,7 +138,7 @@ public class Main {
 						} else if (integer != null) {
 							integer = bs.bubble(integer);
 							try {
-								new IO().write(integer, OUTPUT);
+								IO.write(integer, OUTPUTINT);
 							} catch (Exception e) {
 								
 							}
@@ -148,7 +152,7 @@ public class Main {
 						if (string != null) {
 							string = ss.select(string);
 							try {
-								new IO().write(string, OUTPUT);
+								IO.write(string, OUTPUTSTR);
 							} catch (Exception e) {
 								
 							}
@@ -156,7 +160,7 @@ public class Main {
 						} else if (double1 != null) {
 							double1 = ss.select(double1);
 							try {
-								new IO().write(double1, OUTPUT);
+								IO.write(double1, OUTPUTDOUBLE);
 							} catch (Exception e) {
 								
 							}
@@ -164,7 +168,7 @@ public class Main {
 						} else if (integer != null) {
 							integer = ss.select(integer);
 							try {
-								new IO().write(integer, OUTPUT);
+								IO.write(integer, OUTPUTINT);
 							} catch (Exception e) {
 								
 							}
@@ -178,15 +182,19 @@ public class Main {
 						if (string != null) {
 							ms.mergeSort(string);
 							try {
-								new IO().write(string, OUTPUT);
+								IO.write(string, OUTPUTSTR);
+								for(String s : string){
+									System.out.print(s +",");
+								}
+								System.out.println();
 							} catch (Exception e) {
-								
+								System.err.println("Fehler");
 							}
 							System.out.println(string.length);
 						} else if (double1 != null) {
 							ms.mergeSort(double1);
 							try {
-								new IO().write(double1, OUTPUT);
+								IO.write(double1, OUTPUTDOUBLE);
 							} catch (Exception e) {
 								
 							}
@@ -194,7 +202,7 @@ public class Main {
 						} else if (integer != null) {
 							ms.mergeSort(integer);
 							try {
-								new IO().write(integer, OUTPUT);
+								IO.write(integer, OUTPUTINT);
 							} catch (Exception e) {
 								
 							}
@@ -227,15 +235,15 @@ public class Main {
 							if (string != null) {
 								qs.quicksort(string, u, o);
 								try {
-									new IO().write(string, OUTPUT);
+									IO.write(string, OUTPUTSTR);
 								} catch (Exception e) {
 									
 								}
 								System.out.println(string.length);
 							} else if (double1 != null) {
-								qs.quicksort(double1, u, o);
+									qs.quicksort(double1, u, o);
 								try {
-									new IO().write(double1, OUTPUT);
+									IO.write(double1, OUTPUTDOUBLE);
 								} catch (Exception e) {
 									
 								}
@@ -243,7 +251,7 @@ public class Main {
 							} else if (integer != null) {
 								qs.quicksort(integer, u, o);
 								try {
-									new IO().write(integer, OUTPUT);
+									IO.write(integer, OUTPUTINT);
 								} catch (Exception e) {
 									
 								}
