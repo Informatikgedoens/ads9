@@ -54,7 +54,7 @@ public class IO {
 		bw.close();
 	}
 	
-	public static void write(Double[] result, String destination) throws IOException {
+	public static void write(double[] result, String destination) throws IOException {
 		
 		fw = new FileWriter(destination);
 		bw = new BufferedWriter(fw);
@@ -89,7 +89,7 @@ public class IO {
 		return ints;
 	}
 	
-public static Double[] rwDouble (String pathname) throws IOException {
+public static double[] rwDouble (String pathname) throws IOException {
 		
 		fr = new FileReader(pathname);
 		br = new BufferedReader(fr);
@@ -102,7 +102,7 @@ public static Double[] rwDouble (String pathname) throws IOException {
 			line = br.readLine();
 		}
 		String[] splitResult = temp.split(";");
-		Double[] doubles = new Double[splitResult.length];
+		double[] doubles = new double[splitResult.length];
 	    for (int i=0; i < splitResult.length; i++) {
 	        doubles[i] = Double.parseDouble(splitResult[i].replaceAll(",","."));
 	    }

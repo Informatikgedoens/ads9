@@ -1,7 +1,9 @@
 
 public class BubbleSort {
+	
+	public int counter = 0;
 	// Komplexität O(n²).
-	public static int[] bubble(int[] f) {
+	public int[] bubble(int[] f) {
 		boolean unsorted = true;
 		int temp;
 		do { // Vertausche
@@ -12,31 +14,32 @@ public class BubbleSort {
 					f[i] = f[i+1];
 					f[i+1] = temp;
 					unsorted=true;
+					counter++;
 				}
 			}
 		} while (unsorted);
 		return f;
 	}
 	
-	public static void ausgeben(int [] f) {
+	public void ausgeben(int [] f) {
 		for(int a=0; a < f.length; a++) {
 			System.out.print(f[a] + ",");
 		}
 	}	
 	
-	public static void ausgeben(double[] f) {
+	public void ausgeben(double[] f) {
 		for(int a=0; a < f.length; a++) {
 			System.out.print(f[a] + ",");
 		}
 	}
 	
-	public static void ausgeben(String[] f) {
+	public void ausgeben(String[] f) {
 		for(int a=0; a < f.length; a++) {
 			System.out.print(f[a] + ",");
 		}
 	}
 	//Ueberladen fuer double.
-	public static double[] bubble(double[] f) {
+	public double[] bubble(double[] f) {
 		boolean unsorted = true;
 		double temp;
 		do { // Vertausche
@@ -47,13 +50,14 @@ public class BubbleSort {
 					f[i] = f[i+1];
 					f[i+1] = temp;
 					unsorted=true;
+					counter++;
 				}
 			}
 		} while (unsorted);
 		return f;
 	}
 	
-	public static String[] bubble (String[] f) {
+	public String[] bubble (String[] f) {
 		boolean unsorted = true;
 		String temp;
 		do { // Vertausche
@@ -64,6 +68,7 @@ public class BubbleSort {
 					f[i] = f[i+1];
 					f[i+1] = temp;
 					unsorted=true;
+					counter++;
 				}
 			}
 		} while (unsorted);

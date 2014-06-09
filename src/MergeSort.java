@@ -1,53 +1,197 @@
-import java.util.ArrayList;
+// This program implements the merge sort algorithm for
+// arrays of integers.
 
+import java.util.*;
 
 public class MergeSort {
 	
-	public static ArrayList<Integer> mergesort(ArrayList<Integer> liste) {
-		if(liste.size() <= 1) {
-			return liste;
-		} else {
-			ArrayList<Integer> half1 = new ArrayList<>();
-			ArrayList<Integer> half2 = new ArrayList<>();
-			mergesort(half1);
-			mergesort(half2);
-			return merge(half1, half2);
-		}
-	}
+	public int counter = 0;;
 
-	public static ArrayList<Integer> merge(ArrayList<Integer> f1, ArrayList<Integer> f2) {
-		ArrayList<Integer> f =  new ArrayList<Integer>();
-		while( !(f1.isEmpty()) && !(f2.isEmpty())) {
-			if(f1.get(0) <= f2.get(0)) {
-				int help = f1.get(0);
-				f.add(help);
-				f1.remove(0);
-				f1.trimToSize();
-			} else {
-				int help = f2.get(0);
-				f.add(help);
-				f2.remove(0);
-				f2.trimToSize();
-			}
-		while(!(f1.isEmpty())) {
-			int help = f1.get(0);
-			f.add(help);
-			f1.remove(0);
-			f1.trimToSize();
-		}
-		while(!(f2.isEmpty())) {
-			int help = f2.get(0);
-			f.add(help);
-			f2.remove(0);
-			f2.trimToSize();
-		}
-		}
-		return f;
-	}
-	
-	public static void ausgeben (ArrayList<Integer> list) {
-		for(Integer s : list) {
-			System.out.print(s + ",");
-		}
-	}
-}
+    // Places the elements of the given array into sorted order
+    // using the merge sort algorithm.
+    // post: array is in sorted (nondecreasing) order
+    public void mergeSort(int[] array) {
+        if (array.length > 1) {
+            // split array into two halves
+            int[] left = leftHalf(array);
+            int[] right = rightHalf(array);
+            
+            // recursively sort the two halves
+            mergeSort(left);
+            mergeSort(right);
+            
+            // merge the sorted halves into a sorted whole
+            merge(array, left, right);
+        }
+    }
+    
+    // Returns the first half of the given array.
+    public int[] leftHalf(int[] array) {
+        int size1 = array.length / 2;
+        int[] left = new int[size1];
+        for (int i = 0; i < size1; i++) {
+            left[i] = array[i];
+        }
+        return left;
+    }
+    
+    // Returns the second half of the given array.
+    public int[] rightHalf(int[] array) {
+        int size1 = array.length / 2;
+        int size2 = array.length - size1;
+        int[] right = new int[size2];
+        for (int i = 0; i < size2; i++) {
+            right[i] = array[i + size1];
+        }
+        return right;
+    }
+    
+    // Merges the given left and right arrays into the given 
+    // result array.  Second, working version.
+    // pre : result is empty; left/right are sorted
+    // post: result contains result of merging sorted lists;
+    public void merge(int[] result, int[] left, int[] right) {
+        int i1 = 0;   // index into left array
+        int i2 = 0;   // index into right array
+        
+        for (int i = 0; i < result.length; i++) {
+            if (i2 >= right.length || (i1 < left.length && left[i1] <= right[i2])) {
+                result[i] = left[i1];    // take from left
+                i1++;
+            } else {
+                result[i] = right[i2];   // take from right
+                i2++;
+            }
+            counter++;
+        }
+    }
+    // String.
+    public void mergeSort(String[] array) {
+        if (array.length > 1) {
+            // split array into two halves
+            String[] left = leftHalf(array);
+            String[] right = rightHalf(array);
+            
+            // recursively sort the two halves
+            mergeSort(left);
+            mergeSort(right);
+            
+            // merge the sorted halves into a sorted whole
+            merge(array, left, right);
+            
+        }
+    }
+    
+    // Returns the first half of the given array.
+    public String[] leftHalf(String[] array) {
+        int size1 = array.length / 2;
+        String[] left = new String[size1];
+        for (int i = 0; i < size1; i++) {
+            left[i] = array[i];
+        }
+        return left;
+    }
+    
+    // Returns the second half of the given array.
+    public String[] rightHalf(String[] array) {
+        int size1 = array.length / 2;
+        int size2 = array.length - size1;
+        String[] right = new String[size2];
+        for (int i = 0; i < size2; i++) {
+            right[i] = array[i + size1];
+        }
+        return right;
+    }
+    
+    //Merge String.
+    public void merge(String[] result, String[] left, String[] right) {
+        int i1 = 0;   // index into left array
+        int i2 = 0;   // index into right array
+        
+        for (int i = 0; i < result.length; i++) {
+            if (i2 >= right.length || (i1 < left.length && left[i1].compareToIgnoreCase(right[i2]) <= 0)) {
+                result[i] = left[i1];    // take from left
+                i1++;
+            } else {
+                result[i] = right[i2];   // take from right
+                i2++;
+            }
+            counter++;
+        }
+    }
+    
+    public void mergeSort(double[] array) {
+        if (array.length > 1) {
+            // split array into two halves
+            double[] left = leftHalf(array);
+            double[] right = rightHalf(array);
+            
+            // recursively sort the two halves
+            mergeSort(left);
+            mergeSort(right);
+            
+            // merge the sorted halves into a sorted whole
+            merge(array, left, right);
+        }
+    }
+    
+    // Returns the first half of the given array.
+    public double[] leftHalf(double[] array) {
+        int size1 = array.length / 2;
+        double[] left = new double[size1];
+        for (int i = 0; i < size1; i++) {
+            left[i] = array[i];
+        }
+        return left;
+    }
+    
+    // Returns the second half of the given array.
+    public double[] rightHalf(double[] array) {
+        int size1 = array.length / 2;
+        int size2 = array.length - size1;
+        double[] right = new double[size2];
+        for (int i = 0; i < size2; i++) {
+            right[i] = array[i + size1];
+        }
+        return right;
+    }
+    
+    // Merges the given left and right arrays into the given 
+    // result array.  Second, working version.
+    // pre : result is empty; left/right are sorted
+    // post: result contains result of merging sorted lists;
+    public void merge(double[] result, double[] left, double[] right) {
+        int i1 = 0;   // index into left array
+        int i2 = 0;   // index into right array
+        
+        for (int i = 0; i < result.length; i++) {
+            if (i2 >= right.length || (i1 < left.length && 
+                    left[i1] <= right[i2])) {
+                result[i] = left[i1];    // take from left
+                i1++;
+            } else {
+                result[i] = right[i2];   // take from right
+                i2++;
+            }
+            counter++;
+        }
+    }
+    
+    public void ausgeben (String[] f) {
+    	for(int i = 0 ; i < f.length; i++) {
+    		System.out.print(f[i] + ",");
+    	}
+    }
+    
+    public void ausgeben (int[] f) {
+    	for(int i = 0 ; i < f.length; i++) {
+    		System.out.print(f[i] + ",");
+    	}
+    }
+    
+    public void ausgeben (double[] f) {
+    	for(int i = 0 ; i < f.length; i++) {
+    		System.out.print(f[i] + ",");
+    	}
+    }
+ }

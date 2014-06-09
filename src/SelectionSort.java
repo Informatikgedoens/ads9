@@ -1,6 +1,9 @@
 
 public class SelectionSort {
-	public static int[] select (int[] f) {
+	
+	public int counter = 0;;
+	
+	public int[] select (int[] f) {
 		int p = f.length;
 		int index, max, temp; //index für den Index, max für den maximalenWert und temp zum zwischenspeichern.
 		while(p > 0){
@@ -16,11 +19,12 @@ public class SelectionSort {
 			f[max] = f[p-1];
 			f[p -1] = temp;
 			p--;
+			counter++;
 		}
 		return f;
 	}
 	
-	public static String[] select (String[] f) {
+	public String[] select (String[] f) {
 		int p = f.length;
 		int index, max;	//index für den Index, max für den maximalenWert und temp zum zwischenspeichern.
 		String temp;
@@ -37,11 +41,12 @@ public class SelectionSort {
 			f[max] = f[p-1];
 			f[p -1] = temp;
 			p--;
+			counter++;
 		}
 		return f;
 	}
 	
-	public static double[] select (double[] f) {
+	public double[] select (double[] f) {
 		int p = f.length;
 		int index, max;	//index für den Index, max für den maximalenWert und temp zum zwischenspeichern.
 		double temp;
@@ -58,12 +63,13 @@ public class SelectionSort {
 			f[max] = f[p-1];
 			f[p -1] = temp;
 			p--;
+			counter++;
 		}
 		return f;
 	}
 	
 	//Algorithmus mit 2 For-Schleifen.
-	public static int[] selection(int[] sortieren) {
+	public int[] selection(int[] sortieren) {
 		for (int i = 0; i < sortieren.length - 1; i++) {
 			for (int j = i + 1; j < sortieren.length; j++) {
 				if (sortieren[i] > sortieren[j]) {
@@ -77,13 +83,13 @@ public class SelectionSort {
 		return sortieren;
 	}
 	
-	public static void ausgeben(int [] f) {
+	public void ausgeben(int [] f) {
 		for(int a=0; a < f.length; a++) {
 			System.out.print(f[a] + ",");
 		}
 	}
 	
-	public static void ausgeben(String [] f) {
+	public void ausgeben(String [] f) {
 		for(int a=0; a < f.length; a++) {
 			System.out.print(f[a] + ",");
 		}
