@@ -20,6 +20,7 @@ public class Main {
 	private static final String OUTPUTSTR = "C:\\Users\\Niklas\\Desktop\\ADSS8\\ADS8\\stringOut.txt";
 	private static final String OUTPUTINT = "C:\\Users\\Niklas\\Desktop\\ADSS8\\ADS8\\intOut.txt";
 	private static final String OUTPUTDOUBLE = "C:\\Users\\Niklas\\Desktop\\ADSS8\\ADS8\\doubleOut.txt";
+	private static final String OUTPUTHASH = "/home/niklas/workspace/ADSBLATT8/integerHashOut.txt";
 
 	public static void main(String[] args) {
 		String[] string = null;
@@ -86,6 +87,29 @@ public class Main {
 			} else {
 				if (input.length == 1) {
 					switch (input[0]) {
+					case "0":
+						System.out.println("Wählen Sie eine Aktion: ");
+						System.out.println("1 - insert");
+						System.out.println("2 - remove");
+						System.out.println("3 - modify");
+						System.out.println("4 - beenden");
+						prompt = Terminal.askString("> ");
+						String[] help = prompt.split(" ");
+						LinearProbingHashTable ht = new LinearProbingHashTable();
+						switch (help[0]) {
+						case "1":
+							ht.insert(integer);
+						case "2":
+							System.out.println("Geben Sie den Key ein, welcher gelöscht werden soll.");
+							prompt = Terminal.askString("> ");
+							help = prompt.split(" ");
+							int[] ints = new int[help.length];
+						    for (int i=0; i < help.length; i++) {
+						        ints[i] = Integer.parseInt(help[i]);
+						    }
+							ht.remove(ints[0]);
+						}
+						break;
 					case "1":
 						InsertionSort is = new InsertionSort();
 						System.out.println("Insertionsort");
@@ -269,18 +293,19 @@ public class Main {
 
 	private static void sortMenu() {
 		System.out.println("Sortieralgorithmen");
+		System.out.println("0 - Hashtabelle");
 		System.out.println("1 - Insertionsort");
 		System.out.println("2 - Bubblesort");
 		System.out.println("3 - Selectionsort");
 		System.out.println("4 - Mergesort");
-		System.out.println("5 \"u\" \"o\" - Quicksort");
+		System.out.println("5 - Quicksort");
 		System.out.println("6 - Neue Datei");
 		System.out.println("7 - Beenden");
 	}
 
 	private static void mainMenu() {
 		System.out.println("Sortieralgorithmen");
-		System.out.println("1 - Datei ausw�hlen");
+		System.out.println("1 - Datei auswählen");
 		System.out.println("2 - Beenden");
 	}
 }
